@@ -1,16 +1,15 @@
 package dk.mosberg.entity;
 
+import java.util.UUID;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
-
-import java.util.UUID;
 
 /**
  * Base class for RPG Villager with advanced AI, memory, and needs.
@@ -81,13 +80,10 @@ public class RPGVillagerEntity extends PathAwareEntity {
 
     private String persistentName;
 
-    public static final EntityType<RPGVillagerEntity> TYPE = Registry.register(
-        Registries.ENTITY_TYPE,
-        new Identifier("rpg", "villager"),
-        EntityType.Builder.create(RPGVillagerEntity::new, SpawnGroup.CREATURE)
-            .dimensions(0.6F, 1.95F)
-            .build()
-    );
+    public static final EntityType<RPGVillagerEntity> TYPE =
+            Registry.register(Registries.ENTITY_TYPE, Identifier.of("rpg", "villager"),
+                    EntityType.Builder.create(RPGVillagerEntity::new, SpawnGroup.CREATURE)
+                            .dimensions(0.6F, 1.95F).build(null));
 
     protected RPGVillagerEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
@@ -103,13 +99,15 @@ public class RPGVillagerEntity extends PathAwareEntity {
     }
 
     public void writeData(NbtCompound nbt) {
-        super.writeData(nbt);
-        if (persistentName != null) nbt.putString(NBT_NAME_KEY, persistentName);
+        // Fabric 1.21.11: Use WriteView for serialization
+        if (persistentName != null)
+            nbt.putString(NBT_NAME_KEY, persistentName);
     }
 
     public void readData(NbtCompound nbt) {
-        super.readData(nbt);
-        persistentName = nbt.getString(NBT_NAME_KEY).orElse(null);
+        // Fabric 1.21.11: Use ReadView for deserialization
+        persistentName =
+                nbt.contains(NBT_NAME_KEY) ? nbt.getString(NBT_NAME_KEY).orElse(null) : null;
     }
 
     public String getPersistentName() {
@@ -126,7 +124,8 @@ public class RPGVillagerEntity extends PathAwareEntity {
 
     private String generateRandomName() {
         // Simple random name generator (expand as needed)
-        String[] names = {"Asta", "Bjorn", "Dagny", "Einar", "Freja", "Gunnar", "Inga", "Leif", "Sigrid", "Torben"};
+        String[] names = {"Asta", "Bjorn", "Dagny", "Einar", "Freja", "Gunnar", "Inga", "Leif",
+                "Sigrid", "Torben"};
         return names[Math.abs(UUID.randomUUID().hashCode()) % names.length];
     }
 
