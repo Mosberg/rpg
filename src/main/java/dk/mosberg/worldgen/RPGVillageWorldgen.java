@@ -6,9 +6,21 @@ package dk.mosberg.worldgen;
  */
 public class RPGVillageWorldgen {
     public static void register() {
-        // TODO: Register new village types (frontier, harbor, mountain, forest, nomad)
-        // TODO: Register structure templates and pools for each type
-        // TODO: Register village core/manager block structure
-        // TODO: Hook into biome placement logic
+        // Register new village types
+        String[] types = {"frontier", "harbor", "mountain", "forest", "nomad"};
+        for (String type : types) {
+            VillageTemplateRegistry.registerVillageType(type);
+        }
+
+        // Register structure templates and pools for each type
+        for (String type : types) {
+            VillageTemplateRegistry.registerStructurePool(type);
+        }
+
+        // Register village core/manager block structure
+        VillageTemplateRegistry.registerManagerBlockStructure();
+
+        // Hook into biome placement logic
+        VillageTemplateRegistry.hookBiomePlacement();
     }
 }

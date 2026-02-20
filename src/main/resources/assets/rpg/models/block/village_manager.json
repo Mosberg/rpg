@@ -4,7 +4,8 @@
   "textures": {
     "0": "rpg:block/village_manager_side",
     "1": "rpg:block/village_manager_bottom",
-    "2": "rpg:block/village_manager_top"
+    "2": "rpg:block/village_manager_top",
+    "particle": "rpg:block/village_manager_side"
   },
   "elements": [
     {

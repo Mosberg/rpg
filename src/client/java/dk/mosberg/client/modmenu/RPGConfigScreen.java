@@ -9,6 +9,12 @@ import net.minecraft.text.Text;
 public class RPGConfigScreen extends Screen {
     public RPGConfigScreen(Screen parent) {
         super(Text.of("RPG Config"));
-        // TODO: Implement config UI with Cloth Config
+        // Example Cloth Config integration
+        // (Replace with actual config fields and callbacks)
+        net.minecraft.client.gui.screen.Screen configScreen =
+                me.shedaniel.clothconfig2.api.ConfigBuilder.create().setParentScreen(parent)
+                        .setTitle(Text.of("RPG Config")).build();
+        // To show the config screen, use Mod Menu's factory to return configScreen
+        // This constructor is a placeholder; actual navigation is handled by Mod Menu
     }
 }

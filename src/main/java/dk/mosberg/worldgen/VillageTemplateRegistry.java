@@ -14,6 +14,23 @@ import com.google.gson.JsonObject;
  * Loads village type and structure template data from JSON.
  */
 public class VillageTemplateRegistry {
+    // Stub methods for registration
+    public static void registerVillageType(String type) {
+        // Register village type logic (stub)
+    }
+
+    public static void registerStructurePool(String type) {
+        // Register structure pool logic (stub)
+    }
+
+    public static void registerManagerBlockStructure() {
+        // Register manager block structure logic (stub)
+    }
+
+    public static void hookBiomePlacement() {
+        // Hook biome placement logic (stub)
+    }
+
     public static final String VILLAGE_TYPES_PATH =
             "data/rpg/village/village_templates/village_types.json";
     public static final String STRUCTURE_CONFIG_PATH =
