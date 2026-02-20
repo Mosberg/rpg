@@ -1,0 +1,18 @@
+{
+  "player_shops": [
+    {
+      "id": "basic_stall",
+      "display": "Basic Stall",
+      "rent_cost": 10,
+      "npc_shopkeeper": true,
+      "stock_limit": 16
+    },
+    {
+      "id": "deluxe_stall",
+      "display": "Deluxe Stall",
+      "rent_cost": 30,
+      "npc_shopkeeper": true,
+      "stock_limit": 32
+    }
+  ]
+}

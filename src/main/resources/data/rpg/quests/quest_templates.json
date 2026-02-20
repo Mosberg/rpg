@@ -1,0 +1,40 @@
+{
+  "quest_templates": [
+    {
+      "id": "delivery",
+      "type": "DELIVERY",
+      "objectives": ["item", "destination"],
+      "rewards": ["emeralds", "reputation"]
+    },
+    {
+      "id": "crafting",
+      "type": "CRAFTING",
+      "objectives": ["recipe", "quantity"],
+      "rewards": ["emeralds", "item"]
+    },
+    {
+      "id": "escort",
+      "type": "ESCORT",
+      "objectives": ["npc", "location"],
+      "rewards": ["emeralds", "reputation"]
+    },
+    {
+      "id": "hunt",
+      "type": "HUNT",
+      "objectives": ["mob", "count"],
+      "rewards": ["emeralds", "item"]
+    },
+    {
+      "id": "bounty",
+      "type": "BOUNTY",
+      "objectives": ["target", "proof"],
+      "rewards": ["emeralds", "reputation"]
+    },
+    {
+      "id": "construction",
+      "type": "CONSTRUCTION",
+      "objectives": ["structure", "materials"],
+      "rewards": ["emeralds", "reputation"]
+    }
+  ]
+}

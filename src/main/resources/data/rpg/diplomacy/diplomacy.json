@@ -1,0 +1,8 @@
+{
+  "relations": [
+    { "villageA": "frontier", "villageB": "harbor", "status": "allied" },
+    { "villageA": "mountain", "villageB": "forest", "status": "neutral" },
+    { "villageA": "nomad", "villageB": "frontier", "status": "hostile" }
+  ]
+}
+

@@ -17,4 +17,8 @@ public class RPGConfigScreen extends Screen {
         // To show the config screen, use Mod Menu's factory to return configScreen
         // This constructor is a placeholder; actual navigation is handled by Mod Menu
     }
+
+    // TODO: Implement actual config options and callbacks for all major systems
+    // Example: Add toggles for AI, professions, events, difficulty, performance, customization
+    // Use Cloth Config API to bind these to rpg_config.json
 }

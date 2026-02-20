@@ -1,0 +1,19 @@
+{
+  "enable_ai": true,
+  "enable_professions": true,
+  "enable_events": true,
+  "difficulty": {
+    "survival_realism": true,
+    "raid_frequency": "normal"
+  },
+  "performance": {
+    "ai_tick_cycles": 2,
+    "population_cap": 64
+  },
+  "customization": {
+    "growth_speed": "normal",
+    "trade_balance": "balanced",
+    "personality_variety": "high",
+    "hardcore_mode": false
+  }
+}

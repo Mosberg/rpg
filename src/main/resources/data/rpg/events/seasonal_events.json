@@ -1,0 +1,22 @@
+{
+  "seasonal_events": [
+    {
+      "id": "harvest_festival",
+      "season": "autumn",
+      "activities": ["feast", "games"],
+      "rewards": ["reputation", "food"]
+    },
+    {
+      "id": "spring_fair",
+      "season": "spring",
+      "activities": ["market", "contests"],
+      "rewards": ["emeralds", "items"]
+    },
+    {
+      "id": "winter_solstice",
+      "season": "winter",
+      "activities": ["gathering", "storytelling"],
+      "rewards": ["reputation", "unique_item"]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "themes": [
+    { "id": "rustic", "display": "Rustic", "architecture": "wood_stone", "attire": "simple" },
+    { "id": "magical", "display": "Magical", "architecture": "crystal_wood", "attire": "robes" },
+    {
+      "id": "industrial",
+      "display": "Industrial",
+      "architecture": "brick_metal",
+      "attire": "aprons"
+    },
+    { "id": "nomadic", "display": "Nomadic", "architecture": "tents", "attire": "leather" },
+    { "id": "maritime", "display": "Maritime", "architecture": "boats_docks", "attire": "sailor" }
+  ]
+}

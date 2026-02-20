@@ -33,4 +33,7 @@ public class VillageManagementMenu {
     public Map<String, Boolean> getAllExpansions() {
         return expansions;
     }
+
+    // TODO: Implement actual in-game UI logic for job assignment, expansion approval, treasury, and stats
+    // This should connect to the client-side config/menu and update village state in real time
 }
