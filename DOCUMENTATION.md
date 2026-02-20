@@ -14,7 +14,7 @@ This mod overhauls Minecraft villages and villagers with RPG and simulation feat
 
 ## Configuration
 
-All major systems are configurable via Mod Menu or JSON files in `assets/rpg/` and `config/`.
+All major systems are configurable via Mod Menu or JSON files in `assets/rpg/`, `data/rpg/` and `config/`.
 
 ### Main Config Options
 
