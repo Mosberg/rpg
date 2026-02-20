@@ -2,11 +2,10 @@ package dk.mosberg.network;
 
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.packet.CustomPayload;
-import net.minecraft.util.Identifier;
 
 public class VillagerInfoPayload implements CustomPayload {
     public static final Id<VillagerInfoPayload> ID =
-            new Id<>(Identifier.of("rpg", "villager_info"));
+            new Id<>(net.minecraft.util.Identifier.of("rpg", "villager_info"));
 
     public final String name;
     public final String profession;
@@ -30,12 +29,17 @@ public class VillagerInfoPayload implements CustomPayload {
         return ID;
     }
 
-    public void writePayload(PacketByteBuf buf) {
+    public void write(PacketByteBuf buf) {
         buf.writeString(name);
         buf.writeString(profession);
         buf.writeInt(reputation);
         buf.writeString(needs);
         buf.writeString(relationships);
         buf.writeString(quests);
+    }
+
+    public static VillagerInfoPayload read(PacketByteBuf buf) {
+        return new VillagerInfoPayload(buf.readString(), buf.readString(), buf.readInt(),
+                buf.readString(), buf.readString(), buf.readString());
     }
 }
