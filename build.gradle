@@ -1,0 +1,187 @@
+plugins {
+    id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+    id 'maven-publish'
+    id 'java'
+    id 'idea'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    mavenCentral()
+    maven { name = 'Fabric'; url = 'https://maven.fabricmc.net/' }
+    maven { name = 'Terraformers'; url = 'https://maven.terraformersmc.com/releases/' }
+    maven { name = 'Shedaniel'; url = 'https://maven.shedaniel.me/' }
+    maven { name = 'Modrinth'; url = 'https://api.modrinth.com/maven' }
+    maven { name = 'Modrinth Snapshots'; url = 'https://maven.modrinth.com/repository/maven-snapshots/' }
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        "${project.mod_id}" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+
+    runs {
+        client {
+            client()
+            configName = 'Minecraft Client'
+            ideConfigGenerated = true
+            runDir = 'run'
+            property 'fabric.log.level', 'info'
+            property 'fabric.log.timestamps', 'true'
+            // IMPROVED: Add mod args for better dev experience
+            mods {
+                "${project.mod_id}" {
+                    source sourceSets.main
+                    source sourceSets.client
+                }
+            }
+        }
+        server {
+            server()
+            configName = 'Minecraft Server'
+            ideConfigGenerated = true
+            runDir = 'run-server'
+            property 'fabric.log.level', 'info'
+            property 'fabric.log.timestamps', 'true'
+        }
+    }
+}
+
+// FIXED: Proper classpath for split sources - main runtime includes client output
+sourceSets {
+    main {
+        runtimeClasspath += sourceSets.client.output
+    }
+    test {
+        runtimeClasspath += sourceSets.client.output // FIXED: Test classpath for split sources [web:3][web:9]
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+    // Libraries - Bundled
+    include implementation("com.google.code.gson:gson:${project.gson_version}")
+    include implementation("org.slf4j:slf4j-api:${project.slf4j_version}")
+
+    // Annotations
+    compileOnly "org.jetbrains:annotations:${project.annotations_version}"
+
+    // Testing
+    testImplementation platform("org.junit:junit-bom:${project.junit_version}")
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // Optional
+    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+    modImplementation "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    def modProps = [
+        'version'               : project.version,
+        'mod_id'                : project.mod_id,
+        'mod_name'              : project.mod_name,
+        'mod_description'       : project.mod_description,
+        'mod_author'            : project.mod_author,
+        'mod_homepage'          : project.mod_homepage,
+        'mod_sources'           : project.mod_sources,
+        'mod_issues'            : project.mod_issues,
+        'mod_license'           : project.mod_license,
+        'mod_icon'              : project.mod_icon,
+        'java_version'          : project.java_version,
+        'loader_version'        : project.loader_version,
+        'minecraft_version'     : project.minecraft_version,
+        'mod_version'           : project.mod_version,
+        'mod_entrypoint_main'   : project.mod_entrypoint_main,
+        'mod_entrypoint_client' : project.mod_entrypoint_client,
+        'mod_entrypoint_modmenu': project.mod_entrypoint_modmenu
+    ]
+    modProps.each { k, v -> inputs.property(k, v) }
+    filesMatching('config/**') { expand modProps }
+    filesMatching('fabric.mod.json') { expand modProps }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = project.java_version.toInteger()
+    options.incremental = true
+    options.encoding = 'UTF-8'
+    // IMPROVED: Better compiler args for performance and warnings
+    options.compilerArgs += [
+        '-Xlint:unchecked',
+        '-Xlint:deprecation'
+    ]
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    // IMPROVED: Better test config
+    systemProperty 'fabric.log.level', 'debug'
+}
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+    def baseName = project.archives_base_name
+    from('LICENSE') {
+        rename { "${it}_${baseName}" }
+    }
+    exclude '**/test/**'
+}
+
+tasks.register('validateModMetadata') {
+    group = 'verification'
+    description = 'Validates mod metadata properties.'
+    def required = [
+        'mod_id', 'mod_name', 'mod_description', 'mod_author', 'mod_license',
+        'mod_entrypoint_main', 'mod_entrypoint_client'
+    ]
+    required.each { key ->
+        if (!project.hasProperty(key)) {
+            throw new GradleException("Missing required property: ${key}")
+        }
+        def value = project.property(key)
+        if (value == null || value.toString().trim().isEmpty()) {
+            throw new GradleException("Missing required property: ${key}")
+        }
+    }
+}
+
+tasks.named('check').configure { dependsOn 'validateModMetadata' }
+
+publishing {
+    publications {
+        create('mavenJava', MavenPublication) {
+            artifactId = project.archives_base_name
+            from components.java
+        }
+    }
+    // Configure repositories as needed
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
