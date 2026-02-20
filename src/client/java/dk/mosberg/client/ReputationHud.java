@@ -17,15 +17,18 @@ public class ReputationHud implements HudRenderCallback {
 
     @Override
     public void onHudRender(DrawContext context, RenderTickCounter tickCounter) {
-        if (lastReputationChange == 0) return;
+        if (lastReputationChange == 0)
+            return;
         long elapsed = (System.currentTimeMillis() - lastChangeTime) / 50;
-        if (elapsed > FADE_TIME) return;
-        int alpha = 255 - (int)(255 * (float)elapsed / FADE_TIME);
+        if (elapsed > FADE_TIME)
+            return;
+        int alpha = 255 - (int) (255 * (float) elapsed / FADE_TIME);
         int color = (lastReputationChange > 0 ? 0x00FF00 : 0xFF0000) | (alpha << 24);
         String text = (lastReputationChange > 0 ? "+" : "") + lastReputationChange + " Reputation";
         MinecraftClient client = MinecraftClient.getInstance();
         int width = client.getWindow().getScaledWidth();
         int y = 60;
-        context.drawText(client.textRenderer, text, (width - client.textRenderer.getWidth(text)) / 2, y, color, true);
+        context.drawText(client.textRenderer, text,
+                (width - client.textRenderer.getWidth(text)) / 2, y, color, true);
     }
 }

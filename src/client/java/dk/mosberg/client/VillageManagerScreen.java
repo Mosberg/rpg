@@ -5,7 +5,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
 public class VillageManagerScreen extends Screen {
-    private final String villageData;
+    // private final String villageData;
 
     public VillageManagerScreen() {
         this("");
@@ -13,7 +13,7 @@ public class VillageManagerScreen extends Screen {
 
     public VillageManagerScreen(String villageData) {
         super(Text.of("Village Manager"));
-        this.villageData = villageData;
+        // this.villageData = villageData;
     }
 
     @Override

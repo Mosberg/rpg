@@ -17,10 +17,10 @@ import net.minecraft.world.World;
 public class RPGVillagerEntity extends PathAwareEntity {
     // Stub goal classes for demonstration
     public static class RoutineGoal extends net.minecraft.entity.ai.goal.Goal {
-        private final RPGVillagerEntity villager;
+        // private final RPGVillagerEntity villager;
 
         public RoutineGoal(RPGVillagerEntity villager) {
-            this.villager = villager;
+            // this.villager = villager;
         }
 
         @Override
@@ -35,10 +35,10 @@ public class RPGVillagerEntity extends PathAwareEntity {
         public void tick() {}
     }
     public static class SocialGoal extends net.minecraft.entity.ai.goal.Goal {
-        private final RPGVillagerEntity villager;
+        // private final RPGVillagerEntity villager;
 
         public SocialGoal(RPGVillagerEntity villager) {
-            this.villager = villager;
+            // this.villager = villager;
         }
 
         @Override
@@ -53,10 +53,10 @@ public class RPGVillagerEntity extends PathAwareEntity {
         public void tick() {}
     }
     public static class NeedsGoal extends net.minecraft.entity.ai.goal.Goal {
-        private final RPGVillagerEntity villager;
+        // private final RPGVillagerEntity villager;
 
         public NeedsGoal(RPGVillagerEntity villager) {
-            this.villager = villager;
+            // this.villager = villager;
         }
 
         @Override

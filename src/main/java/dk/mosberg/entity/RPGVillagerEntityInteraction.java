@@ -7,7 +7,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 
 public class RPGVillagerEntityInteraction {
-    @SuppressWarnings("unchecked")
+    // ...existing code...
     public static void register() {
         UseEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
             if (!(entity instanceof RPGVillagerEntity))
