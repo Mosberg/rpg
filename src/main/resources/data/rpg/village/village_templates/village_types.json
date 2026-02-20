@@ -1,0 +1,11 @@
+{
+  "village_types": ["frontier", "harbor", "mountain", "forest", "nomad"],
+  "templates": {
+    "frontier": ["camp", "hunter_hut", "watchtower", "palisade"],
+    "harbor": ["dock", "fishery", "market", "boat_house"],
+    "mountain": ["shrine", "monastery", "library", "terrace"],
+    "forest": ["treehouse", "canopy_bridge", "herbalist_hut", "grove"],
+    "nomad": ["tent", "firepit", "beast_pen", "wagon"]
+  },
+  "landmarks": ["well", "totem", "fountain"]
+}

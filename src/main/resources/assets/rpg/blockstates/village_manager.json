@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "rpg:block/village_manager"
+    }
+  }
+}

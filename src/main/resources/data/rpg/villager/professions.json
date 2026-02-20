@@ -1,0 +1,35 @@
+{
+  "professions": [
+    {
+      "id": "hunter",
+      "display": "Hunter",
+      "color": "#4e6839",
+      "perks": ["track_animals", "bow_mastery"]
+    },
+    {
+      "id": "brewer",
+      "display": "Brewer",
+      "color": "#a67c52",
+      "perks": ["brew_potions", "trade_drinks"]
+    },
+    {
+      "id": "scribe",
+      "display": "Scribe",
+      "color": "#bfc1c2",
+      "perks": ["copy_books", "enchant_scrolls"]
+    },
+    {
+      "id": "engineer",
+      "display": "Engineer",
+      "color": "#7a7a7a",
+      "perks": ["build_gadgets", "repair_structures"]
+    },
+    { "id": "chef", "display": "Chef", "color": "#e3b16f", "perks": ["cook_feasts", "food_buffs"] },
+    {
+      "id": "guard_captain",
+      "display": "Guard Captain",
+      "color": "#3a3a3a",
+      "perks": ["lead_guards", "defense_bonus"]
+    }
+  ]
+}

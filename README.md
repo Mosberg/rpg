@@ -1,4 +1,4 @@
-# 🌾 **Village & Villager Expansion — Mod Concept**
+# 🌾 **Village & Villager RPG Expansion — Mod Concept**
 
 ### Overview
 

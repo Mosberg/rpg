@@ -1,0 +1,10 @@
+{
+  "core": "village_core",
+  "manager": "village_manager_block",
+  "upgrades": ["well", "totem", "fountain"],
+  "growth": {
+    "paths": true,
+    "walls": true,
+    "adaptive": true
+  }
+}

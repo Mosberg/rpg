@@ -1,0 +1,23 @@
+{
+  "itemGroup.rpg": "RPG",
+  "item.rpg.village_manager": "Village Manager",
+  "block.rpg.village_manager": "Village Manager",
+  "modmenu.rpg.title": "Village & Villager RPG Expansion",
+  "modmenu.rpg.description": "Overhaul villages and villagers with RPG and simulation features.",
+  "rpg.config.title": "RPG Config",
+  "rpg.config.gameplay": "Gameplay",
+  "rpg.config.difficulty": "Difficulty",
+  "rpg.config.performance": "Performance",
+  "rpg.config.customization": "Customization",
+  "rpg.config.enable_ai": "Enable AI Subsystem",
+  "rpg.config.enable_professions": "Enable Professions",
+  "rpg.config.enable_events": "Enable Events",
+  "rpg.config.survival_realism": "Survival Realism",
+  "rpg.config.raid_frequency": "Raid Frequency",
+  "rpg.config.population_cap": "Population Cap",
+  "rpg.config.structure_density": "Structure Density",
+  "rpg.config.growth_speed": "Growth Speed",
+  "rpg.config.trade_balance": "Trade Balance",
+  "rpg.config.personality_variety": "Personality Variety",
+  "rpg.config.hardcore_mode": "Hardcore Simulation Mode"
+}
