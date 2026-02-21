@@ -1,23 +1,19 @@
 package dk.mosberg.admin;
 
-import java.util.HashMap;
-import java.util.Map;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
 
 /**
- * Tracks and manages village manager blocks.
+ * Custom block for the Village Manager, with loot table key override.
  */
-public class VillageManagerBlock {
-    private final Map<String, Object> state = new HashMap<>();
-
-    public void setState(String key, Object value) {
-        state.put(key, value);
+public class VillageManagerBlock extends Block {
+    public VillageManagerBlock(AbstractBlock.Settings settings) {
+        super(settings);
     }
 
-    public Object getState(String key) {
-        return state.get(key);
-    }
-
-    public Map<String, Object> getAllState() {
-        return state;
+    @Override
+    public String getLootTableKey() {
+        // Return a valid loot table key as a string
+        return "rpg:blocks/village_manager";
     }
 }

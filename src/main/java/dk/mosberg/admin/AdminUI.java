@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Material;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -18,7 +19,7 @@ public class AdminUI {
 
     public static void register() {
         // Register the Village Manager block
-        VILLAGE_MANAGER_BLOCK = new Block(AbstractBlock.Settings.create().strength(4.0f));
+        VILLAGE_MANAGER_BLOCK = new Block(AbstractBlock.Settings.of(Material.METAL).strength(4.0f));
         Registry.register(Registries.BLOCK,
                 net.minecraft.util.Identifier.of("rpg", "village_manager"), VILLAGE_MANAGER_BLOCK);
         UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
