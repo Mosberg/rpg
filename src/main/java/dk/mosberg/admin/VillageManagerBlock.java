@@ -11,9 +11,5 @@ public class VillageManagerBlock extends Block {
         super(settings);
     }
 
-    @Override
-    public String getLootTableKey() {
-        // Return a valid loot table key as a string
-        return "rpg:blocks/village_manager";
-    }
+    // No override for getLootTableKey; use default Block behavior
 }
